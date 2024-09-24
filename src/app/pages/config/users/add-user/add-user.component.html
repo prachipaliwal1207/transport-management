@@ -1,0 +1,85 @@
+<div class="container">
+    <div class="title">
+        <p>{{ id > 0 ? 'Update ': 'Add ' }}User</p>
+    </div>
+    <form #addUserForm="ngForm" (ngSubmit)="addUser(addUserForm.value)">
+        <div *ngIf="successAlert"
+            class="alert alert-success alert-dismissible fade show"
+            role="alert">
+            <strong>Success!</strong> Successfully added
+            <button type="button" class="close" data-dismiss="alert"
+                aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div *ngIf="updateAlert"
+        class="alert alert-success alert-dismissible fade show"
+        role="alert">
+        <strong>Success!</strong> Successfully Update Client
+        <button type="button" class="close" data-dismiss="alert"
+            aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+        <div class="user_details">
+            <div class="input_box">
+                <label for="name">Name</label>
+                <input type="text" name="fname" #fname1="ngModel"
+                    placeholder="Enter Name" [(ngModel)]="form.name" required>
+                <span
+                    *ngIf="fname1.errors && fname1.invalid && (fname1.dirty || fname1.touched)"
+                    class="text-danger"> Enter the
+                    name</span>
+            </div>
+
+            <div class="input_box">
+                <label for="username">Username</label>
+                <input type="text" name="username" #username1="ngModel"
+                    placeholder="Enter Username" [(ngModel)]="form.username"
+                    required>
+                <span
+                    *ngIf="username1.errors && username1.invalid && (username1.dirty || username1.touched)"
+                    class="text-danger"> Enter the
+                    Username</span>
+            </div>
+
+            <div class="input_box">
+                <label for="password">Password</label>
+                <input type="password" name="password" #password1="ngModel"
+                    placeholder="Enter Password" [(ngModel)]="form.password"
+                    required>
+                <span
+                    *ngIf="password1.errors && password1.invalid && (password1.dirty || password1.touched)"
+                    class="text-danger"> Enter the
+                    Password</span>
+            </div>
+
+            <div class="input_box">
+                <label for="mobile">Mobile</label>
+                <input type="tel" name="mobile" [(ngModel)]="form.mobileno"
+                    #mobile1="ngModel"
+                    placeholder="Enter Mobile No." required>
+                <span
+                    *ngIf="mobile1.errors && mobile1.invalid && (mobile1.dirty ||mobile1.touched)"
+                    class="text-danger"> Enter the
+                    valid number</span>
+            </div>
+
+            <div class="input_box">
+                <label for="pincode">Pincode</label>
+                <input type="text" name="pincode" #pincode1="ngModel"
+                    placeholder="Enter Pincode" [(ngModel)]="form.pincode"
+                    required>
+                <span
+                    *ngIf="pincode1.errors && pincode1.invalid && (pincode1.dirty || pincode1.touched)"
+                    class="text-danger"> Enter the
+                    pincode</span>
+            </div>
+
+        </div>
+        <div class="reg_btn">
+            <input type="submit" value="{{ id > 0 ? 'Update ' : 'Add ' }}"
+                [disabled]="!addUserForm.valid">
+        </div>
+    </form>
+</div>

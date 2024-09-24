@@ -1,0 +1,150 @@
+<div class="container">
+    <div class="title">
+        <p>{{ id > 0 ? 'Update ': 'Add ' }} Vehicle</p>
+    </div>
+    <form #addVehicleForm="ngForm"
+        (ngSubmit)="addVehicle(addVehicleForm['value'])">
+        <div *ngIf="successAlert"
+            class="alert alert-success alert-dismissible fade show"
+            role="alert">
+            <strong>Success!</strong> Successfully added
+            <button type="button" class="close" data-dismiss="alert"
+                aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div *ngIf="updateAlert"
+            class="alert alert-success alert-dismissible fade show"
+            role="alert">
+            <strong>Success!</strong> Successfully Update Vehicle
+            <button type="button" class="close" data-dismiss="alert"
+                aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="user_details">
+            <div class="input_box">
+                <label for="vehicleName">Vehicle Name</label>
+                <input type="text" name="vehicleName" #vehicleId1="ngModel"
+                    placeholder="Enter Vehicle Name"
+                    [(ngModel)]="form.vehicleName"
+                    required>
+                <span
+                    *ngIf="vehicleId1.errors && vehicleId1.invalid && (vehicleId1.dirty || vehicleId1.touched)"
+                    class="text-danger"> Enter the
+                    vehicle name</span>
+            </div>
+
+            <div class="input_box">
+                <label for="vehicleType">Vehicle Type</label>
+                <select name="vehicleType" id="vehicleType"
+                    #vehicleType1="ngModel" [(ngModel)]="form.vehicleType"
+                    class="type" required>
+                    <option value>Select an option</option>
+                    <!-- <option *ngFor="let item of parties" [value]="item.id" [innerText]="item.name"></option> -->
+                    <option>Truck</option>
+                    <option>Van</option>
+                </select>
+                <span
+                    *ngIf="vehicleType1.errors && vehicleType1.invalid && (vehicleType1.dirty || vehicleType1.touched)"
+                    class="text-danger"> Select vehicle type </span>
+            </div>
+
+            <div class="input_box">
+                <label for="vehicleNo">Vehicle No</label>
+                <input type="text" name="vehicleNo" #vehicleNo1="ngModel"
+                    placeholder="Enter Vehicle No" [(ngModel)]="form.vehicleNo"
+                    required>
+                <span
+                    *ngIf="vehicleNo1.errors && vehicleNo1.invalid && (vehicleNo1.dirty || vehicleNo1.touched)"
+                    class="text-danger"> Enter the
+                    vehicle no</span>
+            </div>
+
+            <div class="input_box">
+                <label for="insuranceNo">Insurance No</label>
+                <input type="text" name="insuranceNo" #insuranceNo1="ngModel"
+                    placeholder="Enter Insurance No"
+                    [(ngModel)]="form.insuranceNo"
+                    required>
+                <span
+                    *ngIf="insuranceNo1.errors && insuranceNo1.invalid && (insuranceNo1.dirty ||insuranceNo1.touched)"
+                    class="text-danger"> Enter the
+                    insurance no </span>
+            </div>
+
+            <div class="input_box">
+                <label for="insurancePhoto">Insurance Photo</label>
+                <!-- <input type="file" alt="Submit" name="insurancePhoto"
+                    #insurancePhoto1="ngModel"
+                    placeholder="Enter Insurance Photo"
+                    [(ngModel)]="form.insurancePhoto"
+                    required>
+                <span
+                    *ngIf="insurancePhoto1.errors && insurancePhoto1.invalid && (insurancePhoto1.dirty || insurancePhoto1.touched)"
+                    class="text-danger"> select
+                    insurance photo</span> -->
+                <input type="file"
+                    (change)="onFileChange($event, 'insurancePhoto')" />
+                <div *ngIf="insurancePhotoError" class="error">Insurance
+                    photo is required.</div>
+            </div>
+
+            <div class="input_box">
+                <label for="insuranceExpiry">Insurance Expiry</label>
+                <input type="date" name="insuranceExpiry"
+                    #insuranceExpiry1="ngModel"
+                    placeholder="Enter Insurance Expiry"
+                    [(ngModel)]="form.insuranceExpiry" required>
+                <span
+                    *ngIf="insuranceExpiry1.errors && insuranceExpiry1.invalid && (insuranceExpiry1.dirty || insuranceExpiry1.touched)"
+                    class="text-danger"> Select the Insurance Expiry</span>
+            </div>
+
+            <div class="input_box">
+                <label for="pucNo">PUC No</label>
+                <input type="text" name="pucNo" #pucNo1="ngModel"
+                    placeholder="Enter PUC No" [(ngModel)]="form.pucNo"
+                    required>
+                <span
+                    *ngIf="pucNo1.errors && pucNo1.invalid && (pucNo1.dirty ||pucNo1.touched)"
+                    class="text-danger"> Enter the
+                    puc no </span>
+            </div>
+
+            <div class="input_box">
+                <label for="pucPhoto">PUC Photo</label>
+                <input type="file"
+                    (change)="onFileChange($event, 'pucPhoto')" />
+                <div *ngIf="pucPhotoError" class="error">PUC photo is
+                    required.</div>
+            </div>
+
+            <div class="input_box">
+                <label for="pucExpiry">PUC Expiry</label>
+                <input type="date" name="pucExpiry" #pucExpiry1="ngModel"
+                    placeholder="Enter PUC Expiry" [(ngModel)]="form.pucExpiry"
+                    required>
+                <span
+                    *ngIf="pucExpiry1.errors && pucExpiry1.invalid && (pucExpiry1.dirty || pucExpiry1.touched)"
+                    class="text-danger"> Select the puc expiry</span>
+            </div>
+
+            <div class="input_box">
+                <label for="rcExpiry">PUC Expiry</label>
+                <input type="date" name="rcExpiry" #rcExpiry1="ngModel"
+                    placeholder="Enter Renewal Expiry"
+                    [(ngModel)]="form.rcExpiry"
+                    required>
+                <span
+                    *ngIf="rcExpiry1.errors && rcExpiry1.invalid && (rcExpiry1.dirty || rcExpiry1.touched)"
+                    class="text-danger"> Select the rc expiry</span>
+            </div>
+
+        </div>
+        <div class="reg_btn">
+            <input type="submit" value="{{ id > 0 ? 'Update ': 'Add ' }} "
+                [disabled]="!addVehicleForm['valid']">
+        </div>
+    </form>
+</div>

@@ -1,0 +1,79 @@
+.container {
+    padding: 20px;
+    font-size: 18px;
+    width: 168vh;
+
+    .upper {
+        margin-left: 2rem;
+        display: flex;
+        flex-direction: row;
+    }
+
+    table {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+
+        th {
+            background-color: rgb(241, 241, 241);
+        }
+
+        th,
+        td {
+            padding: 25px;
+            text-align: center;
+
+            &:hover {
+                background-color: whitesmoke;
+            }
+        }
+
+        button {
+            border-radius: 50%;
+            font-size: 20px;
+            text-align: center;
+            color: black;
+            padding: 10px;
+
+            &.editIcon {
+                background-color: blue;
+            }
+
+            &.deleteIcon {
+                background-color: red;
+            }
+        }
+    }
+}
+
+.alert-success {
+    width: 50rem;
+    margin: auto;
+    padding: 15px;
+    font-size: 12px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.close {
+    background-color: transparent;
+    opacity: .7;
+    border: 1px solid black;
+    position: absolute;
+    right: 0;
+    margin-right: 20px;
+    padding: 2px;
+}
+
+
+@media screen and (max-width: 1164px) {
+
+    .alert-success {
+        width: 30rem;
+        margin: auto;
+    }
+
+    .close {
+        margin-right: 40px;
+    }
+}

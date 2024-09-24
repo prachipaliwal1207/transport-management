@@ -1,0 +1,83 @@
+.container {
+    padding: 20px;
+    font-size: 18px;
+
+    .mat-table-container {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+
+    .upper {
+        margin-left: 2rem;
+    }
+
+    table {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto; /* Ensure horizontal scrolling if needed */
+
+        th {
+            background-color: rgb(241, 241, 241);
+        }
+
+        th, td {
+            padding: 10px; /* Adjust padding for better fit */
+            text-align: center;
+
+            &:hover {
+                background-color: whitesmoke;
+            }
+        }
+
+        button {
+            border-radius: 50%;
+            font-size: 20px;
+            text-align: center;
+            color: black;
+            padding: 10px;
+
+            &.editIcon {
+                background-color: blue;
+            }
+
+            &.deleteIcon {
+                background-color: red;
+            }
+        }
+    }
+
+    mat-paginator {
+        width: 100%;
+    }
+}
+
+.alert-success{
+    width: 50rem;
+    margin: auto;
+    padding: 15px;
+    font-size: 12px;
+    margin-top: 15px;
+  }
+  
+  .close {
+    background-color: transparent;
+    opacity: .7;
+    border: 1px solid black;
+    position: absolute;
+    right: 0;
+    margin-right: 20px;
+    padding: 2px;
+  }
+  
+  @media screen and (max-width: 1164px) {
+    
+  .alert-success{
+    width: 30rem;
+    margin: auto;
+  }
+  
+  .close {
+    margin-right: 40px;
+  }
+  }

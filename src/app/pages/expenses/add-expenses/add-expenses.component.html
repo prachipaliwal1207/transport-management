@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="title">
+        <p>{{ id > 0 ? 'Update ': 'Add ' }} Expenses</p>
+    </div>
+    <form #addExpensesForm="ngForm"
+        (ngSubmit)="addExpenses(addExpensesForm['value'])">
+        <div *ngIf="successAlert"
+            class="alert alert-success alert-dismissible fade show"
+            role="alert">
+            <strong>Success!</strong> Successfully added
+            <button type="button" class="close" data-dismiss="alert"
+                aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div *ngIf="updateAlert" 
+        class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Success!</strong> Successfully Update Client
+        <button type="button" class="close" data-dismiss="alert"
+          aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <div class="user_details">
+            <div class="input_box">
+                <label for="expenseType">Vehicle Id</label>
+                <select name="vehicleId" id="vehicleId"
+                #vehicleId1="ngModel" [(ngModel)]="form.vehicleId"
+                class="type" required>
+                <option value>Select an option</option>
+                <option *ngFor="let item of vehicleTypeId" [value]="item.id" [innerText]="item.vehicleType"></option>
+                <!-- <option>1</option> -->
+            </select>
+                <span
+                    *ngIf="vehicleId1.errors && vehicleId1.invalid && (vehicleId1.dirty || vehicleId1.touched)"
+                    class="text-danger"> Enter the
+                    client id</span>
+            </div>
+
+            <div class="input_box">
+                <label for="expenseType">Expense Type</label>
+                <select name="expenseType" id="expenseType"
+                    #expenseType1="ngModel" [(ngModel)]="form.expenceType"
+                    class="type" required>
+                    <option value>Select an option</option>
+                    <option *ngFor="let item of expenceTypeId" [value]="item.id" [innerText]="item.name"></option>
+                    <!-- <option>1</option> -->
+                </select>
+                <span
+                    *ngIf="expenseType1.errors && expenseType1.invalid && (expenseType1.dirty || expenseType1.touched)"
+                    class="text-danger"> Select expense type </span>
+            </div>
+
+            <div class="input_box">
+                <label for="date">Date Added</label>
+                <input type="date" name="date" #date1="ngModel"
+                    placeholder="Enter date" [(ngModel)]="form.dateAdded" required>
+                <span
+                    *ngIf="date1.errors && date1.invalid && (date1.dirty || date1.touched)"
+                    class="text-danger"> Enter the
+                    date</span>
+            </div>
+
+            <div class="input_box">
+                <label for="amount">Amount</label>
+                <input type="text" name="amount" #amount1="ngModel"
+                    placeholder="Enter Amount" [(ngModel)]="form.amount"
+                    required>
+                <span
+                    *ngIf="amount1.errors && amount1.invalid && (amount1.dirty || amount1.touched)"
+                    class="text-danger"> Enter the
+                    Amount</span>
+            </div>
+
+        </div>
+        <div class="reg_btn">
+            <input type="submit" value="{{ id > 0 ? 'Update ': 'Add ' }} "
+                [disabled]="!addExpensesForm['valid']">
+        </div>
+    </form>
+</div>

@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="title">
+    <p>{{ id > 0 ? 'Update ' : 'Add ' }} Payment</p>
+  </div>
+  <form #addPaymentForm="ngForm" (ngSubmit)="addPayment(addPaymentForm.value)">
+    <div *ngIf="successAlert"
+      class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>Success!</strong> Successfully added
+      <button type="button" class="close" data-dismiss="alert"
+        aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div *ngIf="updateAlert" 
+    class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Success!</strong> Successfully Update Client
+    <button type="button" class="close" data-dismiss="alert"
+      aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+    <div class="user_details">
+      <div class="input_box">
+        <label for="name">Expense Name</label>
+        <input type="text" name="fname" #name1="ngModel"
+          placeholder="Enter Name" [(ngModel)]="form.name" required>
+        <span
+          *ngIf="name1.errors && name1.invalid && (name1.dirty || name1.touched)"
+          class="text-danger"> Enter the name</span>
+      </div>
+    </div>
+
+    <div class="reg_btn">
+      <input type="submit" value="{{ id > 0 ? 'Update' : 'Add' }}"
+        [disabled]="!addPaymentForm.valid">
+    </div>
+  </form>
+</div>

@@ -1,0 +1,126 @@
+<div class="container">
+  <div class="title">
+    <p>{{ id > 0 ? 'Update ': 'Add ' }}Client</p>
+  </div>
+  <form #addClientForm="ngForm" (ngSubmit)="addClient(addClientForm['value'])">
+    <div *ngIf="successAlert"
+      class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>Success!</strong> Successfully Added
+      <button type="button" class="close" data-dismiss="alert"
+        aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div *ngIf="updateAlert"
+      class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>Success!</strong> Successfully Update Client
+      <button type="button" class="close" data-dismiss="alert"
+        aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="user_details">
+      <div class="input_box">
+        <label for="name">Name</label>
+        <input type="text" name="fname" #name1="ngModel"
+          placeholder="Enter Name" [(ngModel)]="form.name" required>
+        <span
+          *ngIf="name1.errors && name1.invalid && (name1.dirty || name1.touched)"
+          class="text-danger"> Enter the name</span>
+      </div>
+
+      <div class="input_box">
+        <label for="address">Address</label>
+        <input type="text" name="address" #address1="ngModel"
+          placeholder="Enter Address" [(ngModel)]="form.address" required>
+        <span
+          *ngIf="address1.errors && address1.invalid && (address1.dirty || address1.touched)"
+          class="text-danger"> Enter the
+          address</span>
+      </div>
+
+      <div class="input_box">
+        <label for="gstNo">GST Number</label>
+        <input type="text" name="gstNo" #gstNo1="ngModel"
+          placeholder="Enter GST No." [(ngModel)]="form.gstin" required>
+        <span
+          *ngIf="gstNo1.errors && gstNo1.invalid && (gstNo1.dirty || gstNo1.touched)"
+          class="text-danger"> Enter the
+          GST number</span>
+      </div>
+
+      <div class="input_box">
+        <label for="pincode">Pincode</label>
+        <input type="text" name="pincode" #pincode1="ngModel"
+          placeholder="Enter Pincode" [(ngModel)]="form.pincode" required>
+        <span
+          *ngIf="pincode1.errors && pincode1.invalid && (pincode1.dirty || pincode1.touched)"
+          class="text-danger"> Enter the
+          pincode</span>
+      </div>
+
+      <div class="input_box">
+        <label for="city">City</label>
+        <select name="city" id="city" #city1="ngModel" [(ngModel)]="form.city"
+          class="type" required>
+          <option value>Select an option</option>
+          <option>Indore</option>
+        </select>
+        <span
+          *ngIf="city1.errors && city1.invalid && (city1.dirty || city1.touched)"
+          class="text-danger"> Select City</span>
+      </div>
+
+      <div class="input_box">
+        <label for="state">State</label>
+        <select name="city" id="state" #state1="ngModel"
+          [(ngModel)]="form.state" class="type" required>
+          <option value>Select an option</option>
+          <!-- <option *ngFor="let item of parties" [value]="item.id" [innerText]="item.name"></option> -->
+          <option>MP</option>
+        </select>
+        <span
+          *ngIf="state1.errors && state1.invalid && (state1.dirty || state1.touched)"
+          class="text-danger"> Select State</span>
+      </div>
+
+      <div class="input_box">
+        <label for="mobile">Mobile</label>
+        <input type="tel" name="mobile" [(ngModel)]="form.mobile"
+          #mobile1="ngModel"
+          placeholder="Enter Mobile No." required>
+        <span
+          *ngIf="mobile1.errors && mobile1.invalid && (mobile1.dirty ||mobile1.touched)"
+          class="text-danger"> Enter the
+          valid number</span>
+      </div>
+
+      <div class="input_box">
+        <label for="mobile">Mobile 2</label>
+        <input type="tel" name="mobile2" [(ngModel)]="form.mobile2"
+          #mobile2="ngModel"
+          placeholder="Enter Mobile No. 2" required>
+        <span
+          *ngIf="mobile2.errors && mobile2.invalid && (mobile2.dirty ||mobile2.touched)"
+          class="text-danger"> Enter the
+          valid number</span>
+      </div>
+
+      <div class="input_box">
+        <label for="email">Email</label>
+        <input type="email" name="email" [(ngModel)]="form.email"
+          #email2="ngModel"
+          placeholder="Enter Email" required email>
+        <span
+          *ngIf="email2.errors && email2.invalid && (email2.dirty ||email2.touched)"
+          class="text-danger"> Enter the
+          valid email</span>
+      </div>
+
+    </div>
+    <div class="reg_btn">
+      <input type="submit" value="{{ id > 0 ? 'Update ': 'Add ' }} "
+        [disabled]="!addClientForm['valid']">
+    </div>
+  </form>
+</div>

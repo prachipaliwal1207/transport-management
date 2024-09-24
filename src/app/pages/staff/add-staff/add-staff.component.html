@@ -1,0 +1,143 @@
+<div class="container">
+    <div class="title">
+        <p>{{ id > 0 ? 'Update ': 'Add ' }} Staff</p>
+    </div>
+    <form #addStaffForm="ngForm" (ngSubmit)="addStaff(addStaffForm.value)">
+        <div *ngIf="successAlert"
+            class="alert alert-success alert-dismissible fade show"
+            role="alert">
+            <strong>Success!</strong> Successfully added
+            <button type="button" class="close" data-dismiss="alert"
+                aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div *ngIf="updateAlert"
+            class="alert alert-success alert-dismissible fade show"
+            role="alert">
+            <strong>Success!</strong> Successfully Update Client
+            <button type="button" class="close" data-dismiss="alert"
+                aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="user_details">
+
+            <div class="input_box">
+                <label for="type">Type</label>
+                <select name="type" id="type" #type1="ngModel"
+                    [(ngModel)]="form.type"
+                    class="type" required>
+                    <option value>Select an option</option>
+                    <!-- <option *ngFor="let item of parties" [value]="item.id" [innerText]="item.name"></option> -->
+                    <option>Driver</option>
+                    <option>Manager</option>
+                </select>
+                <span
+                    *ngIf="type1.errors && type1.invalid && (type1.dirty || type1.touched)"
+                    class="text-danger"> Select type</span>
+            </div>
+
+            <div class="input_box">
+                <label for="fname">First Name</label>
+                <input type="text" name="fname" #fname1="ngModel"
+                    placeholder="Enter First Name" [(ngModel)]="form.fname"
+                    required>
+                <span
+                    *ngIf="fname1.errors && fname1.invalid && (fname1.dirty || fname1.touched)"
+                    class="text-danger"> Enter the
+                    fname</span>
+            </div>
+
+            <div class="input_box">
+                <label for="lname">Last Name</label>
+                <input type="text" name="lname" #lname1="ngModel"
+                    placeholder="Enter Last Name" [(ngModel)]="form.sname"
+                    required>
+                <span
+                    *ngIf="lname1.errors && lname1.invalid && (lname1.dirty || lname1.touched)"
+                    class="text-danger"> Enter the
+                    lname</span>
+            </div>
+
+            <div class="input_box">
+                <label for="dob">Day Of Birth</label>
+                <input type="date" name="dob" #dob1="ngModel"
+                    placeholder="Enter DOB"
+                    [(ngModel)]="form.dob"
+                    required>
+                <span
+                    *ngIf="dob1.errors && dob1.invalid && (dob1.dirty || dob1.touched)"
+                    class="text-danger">Enter the
+                    dob</span>
+            </div>
+
+            <div class="input_box">
+                <label for="doj">Day Of Joining</label>
+                <input type="number" name="doj" #doj1="ngModel"
+                    placeholder="Enter DOJ" [(ngModel)]="form.doj"
+                    required>
+                <span
+                    *ngIf="doj1.errors && doj1.invalid && (doj1.dirty || doj1.touched)"
+                    class="text-danger"> Enter the
+                    doj</span>
+            </div>
+
+            <div class="input_box">
+                <label for="monthlySalary">Monthly Salary</label>
+                <input type="number" name="monthlySalary"
+                    #monthlySalary1="ngModel"
+                    placeholder="Enter Monthly Salary"
+                    [(ngModel)]="form.monthlySalary"
+                    required>
+                <span
+                    *ngIf="monthlySalary1.errors && monthlySalary1.invalid && (monthlySalary1.dirty || monthlySalary1.touched)"
+                    class="text-danger"> Enter the
+                    monthly salary</span>
+            </div>
+
+            <div class="input_box">
+                <label for="drivingLicenceNo">Driving Licence No</label>
+                <input type="text" name="drivingLicenceNo"
+                    #drivingLicenceNo1="ngModel"
+                    placeholder="Enter Driving LicenceNo"
+                    [(ngModel)]="form.dlno"
+                    required>
+                <span
+                    *ngIf="drivingLicenceNo1.errors && drivingLicenceNo1.invalid && (drivingLicenceNo1.dirty || drivingLicenceNo1.touched)"
+                    class="text-danger"> Enter the
+                    driving licence no</span>
+            </div>
+
+            <div class="input_box">
+                <label for="licencePhoto">Licence Photo</label>
+                <input type="file" alt="Submit" name="plicencePhoto"
+                    #licencePhoto1="ngModel"
+                    placeholder="Enter Licence Photo" [(ngModel)]="form.dlphoto"
+                    required>
+                <span
+                    *ngIf="licencePhoto1.errors && licencePhoto1.invalid && (licencePhoto1.dirty || licencePhoto1.touched)"
+                    class="text-danger"> Enter the
+                    licence photo</span>
+            </div>
+
+            <div class="input_box">
+                <label for="licenceExpiry">Licence Expiry</label>
+                <input type="text" name="licenceExpiry"
+                    #licenceExpiry1="ngModel"
+                    placeholder="Ente Licence Expiry"
+                    [(ngModel)]="form.dlexpiry"
+                    required>
+                <span
+                    *ngIf="licenceExpiry1.errors && licenceExpiry1.invalid && (licenceExpiry1.dirty || licenceExpiry1.touched)"
+                    class="text-danger"> Enter the
+                    licence expiry</span>
+            </div>
+
+        </div>
+        <div class="reg_btn">
+            <input type="submit" value="{{ id > 0 ? 'Update' : 'Add' }}"
+                [disabled]="!addStaffForm.valid">
+        </div>
+    </form>
+</div>

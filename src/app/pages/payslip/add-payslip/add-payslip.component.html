@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="title">
+        <p>{{ id > 0 ? 'Update ': 'Add ' }} Payslip</p>
+    </div>
+    <form #addPayslipForm="ngForm"
+        (ngSubmit)="addPayslip(addPayslipForm['value'])">
+        <div *ngIf="successAlert"
+            class="alert alert-success alert-dismissible fade show"
+            role="alert">
+            <strong>Success!</strong> Successfully added
+            <button type="button" class="close" data-dismiss="alert"
+                aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div *ngIf="updateAlert"
+            class="alert alert-success alert-dismissible fade show"
+            role="alert">
+            <strong>Success!</strong> Successfully Update Client
+            <button type="button" class="close" data-dismiss="alert"
+                aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="user_details">
+            <!-- <div class="input_box">
+                <label for="payslip">Pay Slip</label>
+                <input type="text" name="payslip" #payslip1="ngModel"
+                    placeholder="Enter Pay Slip" [(ngModel)]="form.payslip"
+                    required>
+                <span
+                    *ngIf="payslip1.errors && payslip1.invalid && (payslip1.dirty || payslip1.touched)"
+                    class="text-danger"> Enter the
+                    payslip</span>
+            </div> -->
+
+            <div class="input_box">
+                <label for="formmDate">Form Date</label>
+                <input type="date" name="fromDate" #fromDate1="ngModel"
+                    placeholder="Enter From Date" [(ngModel)]="form.fromDate"
+                    required>
+                <span
+                    *ngIf="fromDate1.errors && fromDate1.invalid && (fromDate1.dirty || fromDate1.touched)"
+                    class="text-danger">Select the
+                    from date</span>
+            </div>
+
+            <div class="input_box">
+                <label for="toDate">Form Date</label>
+                <input type="date" name="toDate" #toDate1="ngModel"
+                    placeholder="Enter To Date" [(ngModel)]="form.toDate"
+                    required>
+                <span
+                    *ngIf="toDate1.errors && toDate1.invalid && (toDate1.dirty || toDate1.touched)"
+                    class="text-danger">Select the
+                    to date</span>
+            </div>
+
+        </div>
+        <div class="reg_btn">
+            <input type="submit" value="{{ id > 0 ? 'Update ': 'Add ' }}"
+                [disabled]="!addPayslipForm['valid']">
+        </div>
+    </form>
+</div>

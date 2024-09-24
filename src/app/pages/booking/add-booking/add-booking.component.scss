@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  width: 167vh;
+  background: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1),
+    0px 5px 12px -2px rgba(0, 0, 0, 0.1), 0px 18px 36px -6px rgba(0, 0, 0, 0.1);
+  margin-left: 20px;
+  margin-top: 20px;
+  padding: 15px;
+}
+
+.container .title {
+  padding: 25px;
+  background: #f6f8fa;
+}
+
+.container .title p {
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
+}
+
+.container .title p::before {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 5rem;
+  height: 3px;
+  background: linear-gradient(to right, #f37a65, #d64141);
+}
+
+.user_details .input_box {
+  padding: 10px;
+  margin: 0 0 12px 0;
+}
+
+.input_box label {
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.input_box label::after {
+  content: " *";
+  color: whitesmoke;
+}
+
+.input_box input,select,textarea {
+  width: 100%;
+  height: 45px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 10px;
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+  background-color: #f6f8fa;
+  transition: all 120ms ease-out 0s;
+}
+
+.input_box input:focus,
+.input_box select:focus {
+  box-shadow: 0px 0px 0px 2px #ac8ece;
+}
+
+.reg_btn {
+  padding: 25px;
+  margin: 15px 0;
+}
+
+.reg_btn input {
+  height: 45px;
+  width: 100%;
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  background: black;
+  border-radius: 5px;
+  color: #ffffff;
+  letter-spacing: 1px;
+  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.text-danger {
+  color: #d64141;
+  font-size: 14px; 
+}
+.reg_btn input:hover {
+  background: rgb(33, 33, 33);
+}
+
+.reg_btn input:disabled {
+  background: #cccccc; /* Optional: style for disabled state */
+  cursor: not-allowed;
+}
+
+.alert-success{
+  width: 50rem;
+  margin: auto;
+  padding: 15px;
+  font-size: 12px;
+  margin-top: 15px;
+}
+
+.close {
+  background-color: transparent;
+  opacity: .7;
+  border: 1px solid black;
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  padding: 2px;
+}
+
+@media screen and (max-width: 1164px) {
+  
+.alert-success{
+  width: 30rem;
+  margin: auto;
+}
+
+.close {
+  margin-right: 40px;
+}
+}

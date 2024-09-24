@@ -1,0 +1,108 @@
+<div class="container">
+  <div class="row colrow">
+    <div class="col-3 bg-white shadow border-rounded p-2">
+      <div class="row">
+        <div class="icons col-4">
+          <mat-icon>currency_rupee</mat-icon>
+        </div>
+        <div class="col-8">
+          <h4>Today's Sales</h4>
+          <span>{{todaysale | number}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-3 bg-white shadow border-rounded p-2">
+      <div class="row">
+        <div class="icons col-4">
+          <mat-icon>receipt</mat-icon>
+        </div>
+        <div class="col-8">
+          <h4>Today's Invoices</h4>
+          <span>{{todaysaleamt | number}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-3 bg-white shadow border-rounded p-2">
+      <div class="row">
+        <div class="icons col-4">
+          <mat-icon>local_gas_station</mat-icon>
+        </div>
+        <div class="col-8">
+          <h4>Today's Fuel Bought</h4>
+          <span>{{todayfule | number}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3 w-100">
+    <div class="col-md-6">
+      <div class="bg-white shadow tableBlock p-3">
+        <h3 class="m-2">Latest Sales</h3>
+        <table class="table">
+          <tr>
+            <th>S.No.</th>
+            <th>Date</th>
+            <th>Company</th>
+            <th>Party</th>
+            <th>Amount</th>
+          </tr>
+          <tr *ngFor="let item of sales; let i = index;">
+            <td [innerText]="i + 1"></td>
+            <td [innerText]="item.date | date: 'dd MMM YYYY'"></td>
+            <td [innerText]="item.from_party_name"></td>
+            <td [innerText]="item.to_party_name"></td>
+            <td [innerText]="item.amount"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="bg-white shadow tableBlock p-3">
+        <h3 class="m-2">Latest Fule Transaction</h3>
+        <table class="table">
+          <tr>
+            <th>S.No.</th>
+            <th>Date</th>
+            <th>Vehicle</th>
+            <th>Amount</th>
+          </tr>
+          <tr *ngFor="let item of fules; let i = index;">
+            <td [innerText]="i + 1"></td>
+            <td [innerText]="item.date | date: 'dd MMM YYYY'"></td>
+            <td [innerText]="item.vehicle_name"></td>
+            <td [innerText]="item.amount"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-12 mt-4">
+      <h4>Vehicles Expiring Documents (Within one month)</h4>
+    </div>
+    <div class="col-md-12">
+      <div class="row gx-1">
+        <div class="col-md-4 px-4 py-2" *ngFor="let item of vehiclesExpiring | keyvalue; let i = index">
+          <div class="bg-white shadow d-block">
+            <h3 class="text-capitalize bg-{{bg[i]}} text-white border-bottom text-center py-2 mb-2 px-2">{{ item.key }}
+            </h3>
+            <table class="table" *ngIf="vehiclesExpiring[item.key].length > 0; else noDataBlock;">
+              <tr>
+                <th>Vehicle</th>
+                <th>Date Expiry</th>
+              </tr>
+              <tr *ngFor="let veh of vehiclesExpiring[item.key]">
+                <td [innerText]="veh.vehicleNo"></td>
+                <td [innerText]="veh.expiry_date"></td>
+              </tr>
+            </table>
+            <ng-template #noDataBlock>
+              <div class="text-center pb-2">
+                No Expiring Renewal
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,437 @@
+<div class="container">
+  <div class="title">
+    <p>{{ id > 0 ? 'Update ': 'Add ' }}Booking</p>
+  </div>
+  <form #addBookingForm="ngForm" (ngSubmit)="addBooking(addBookingForm['value'])">
+    <div *ngIf="successAlert"
+      class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>Success!</strong> Successfully added
+      <button type="button" class="close" data-dismiss="alert"
+        aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="user_details">
+
+      <div class="row user_details_row">
+
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="input_box">
+                <label for="bookingDate">Booking Date</label><br>
+                <input type="date" id="bookingDate" name="bookingDate"
+                  #bookingDate="ngModel"
+                  placeholder="Enter Booking Date"
+                  [(ngModel)]="form.bookingDate"
+                  required>
+                <span
+                  *ngIf="bookingDate.errors && bookingDate.invalid && (bookingDate.dirty || bookingDate.touched)"
+                  class="text-danger">Enter the booking date</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="input_box">
+                <label for="consignee">Consignee</label><br>
+                <input type="number" id="consignee" name="consignee"
+                  #consignee="ngModel"
+                  placeholder="Enter Consignee" [(ngModel)]="form.consignee"
+                  required min="1" max="4">
+                <span
+                  *ngIf="consignee.errors && consignee.invalid && (consignee.dirty || consignee.touched)"
+                  class="text-danger">
+                  Enter a value between 1 and 4
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" *ngIf="form.consignee >= 1">
+            <div class="col-12">
+              <div class="input_box">
+                <label for="length">Length</label><br>
+                <input type="text" id="length" name="length" #length="ngModel"
+                  placeholder="Enter Length" [(ngModel)]="form.length"
+                  required>
+                <span
+                  *ngIf="length.errors && length.invalid && (length.dirty || length.touched)"
+                  class="text-danger">Enter the length</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" *ngIf="form.consignee >= 2">
+            <div class="col-12">
+              <div class="input_box">
+                <label for="weight">Weight</label><br>
+                <input type="text" id="weight" name="weight" #weight="ngModel"
+                  placeholder="Enter Weight" [(ngModel)]="form.weight"
+                  required>
+                <span
+                  *ngIf="weight.errors && weight.invalid && (weight.dirty || weight.touched)"
+                  class="text-danger">Enter the weight</span>
+              </div></div>
+          </div>
+
+          <div class="row" *ngIf="form.consignee  >= 3">
+            <div class="col-12">
+              <div class="input_box">
+                <label for="height">Height</label><br>
+                <input type="text" id="height" name="height" #height="ngModel"
+                  placeholder="Enter Height" [(ngModel)]="form.height"
+                  required>
+                <span
+                  *ngIf="height.errors && height.invalid && (height.dirty || height.touched)"
+                  class="text-danger">Enter the height</span>
+              </div></div>
+          </div>
+
+          <div class="row" *ngIf="form.consignee >= 4">
+            <div class="col-12">
+              <div class="input_box">
+                <label for="kg">Kilogram</label><br>
+                <input type="text" id="kg" name="kg" #kg="ngModel"
+                  placeholder="Enter KG" [(ngModel)]="form.kg" required>
+                <span
+                  *ngIf="kg.errors && kg.invalid && (kg.dirty || kg.touched)"
+                  class="text-danger">Enter the kg</span>
+              </div></div>
+          </div>
+        </div>
+
+        <!--Second Rowwwww-->
+        <div class="col-md-6 col-lg-6 col-sm-12">
+          <div class="row">
+            <div class="col-12">
+              <div class="input_box">
+                <label for="bookingId">Booking ID</label><br>
+                <input type="text" id="bookingId" name="bookingId"
+                  #bookingId="ngModel"
+                  placeholder="Enter Booking ID" [(ngModel)]="form.bookingId"
+                  required>
+                <span
+                  *ngIf="bookingId.errors && bookingId.invalid && (bookingId.dirty || bookingId.touched)"
+                  class="text-danger">Enter the booking ID</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <div class="input_box">
+                <label for="consignor">Consigner</label><br>
+                <input type="text" id="consignor" name="consignor"
+                  #consignor="ngModel"
+                  placeholder="Enter Consignor" [(ngModel)]="form.consigner"
+                  required>
+                <span
+                  *ngIf="consignor.errors && consignor.invalid && (consignor.dirty || consignor.touched)"
+                  class="text-danger">Enter the consigner</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="input_box">
+                <label for="declaredValue">Declared Value</label><br>
+                <input type="text" id="declaredValue" name="declaredValue"
+                  #declaredValue="ngModel"
+                  placeholder="Enter Declared Value"
+                  [(ngModel)]="form.declaredValue" required>
+                <span
+                  *ngIf="declaredValue.errors && declaredValue.invalid && (declaredValue.dirty || declaredValue.touched)"
+                  class="text-danger">Enter the declared value</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="input_box">
+                <label for="actualWeight">Actual Weight</label><br>
+                <input type="number" id="actualWeight" name="actualWeight"
+                  #actualWeight="ngModel"
+                  placeholder="Enter Actual Weight"
+                  [(ngModel)]="form.actualWeight"
+                  required>
+                <span
+                  *ngIf="actualWeight.errors && actualWeight.invalid && (actualWeight.dirty || actualWeight.touched)"
+                  class="text-danger">Enter the actual weight</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="input_box">
+                <label for="noOfParcels">Number of Parcels</label><br>
+                <input type="number" id="noOfParcels" name="noOfParcels"
+                  #noOfParcels="ngModel"
+                  placeholder="Enter Number of Parcels"
+                  [(ngModel)]="form.noofparcels"
+                  required>
+                <span
+                  *ngIf="noOfParcels.errors && noOfParcels.invalid && (noOfParcels.dirty || noOfParcels.touched)"
+                  class="text-danger">Enter the no of parcle</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="input_box">
+                <label for="chargedWeight">Charged Weight</label><br>
+                <input type="number" id="chargedWeight" name="chargedWeight"
+                  #chargedWeight="ngModel"
+                  placeholder="Enter Charged Weight"
+                  [(ngModel)]="form.chargedWeight"
+                  required>
+                <span
+                  *ngIf="chargedWeight.errors && chargedWeight.invalid && (chargedWeight.dirty || chargedWeight.touched)"
+                  class="text-danger">Enter the charged weight</span>
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="input_box">
+                <label for="freight">Freight</label><br>
+                <input type="number" id="freight" name="freight"
+                  #freight="ngModel"
+                  placeholder="Enter Freight"
+                  [(ngModel)]="form.freight"
+                  required>
+                <span
+                  *ngIf="freight.errors && freight.invalid && (freight.dirty || freight.touched)"
+                  class="text-danger">Enter the freight</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="input_box">
+                <label for="docketCharges">Docket Charges</label><br>
+                <input type="number" id="docketCharges" name="docketCharges"
+                  #docketCharges="ngModel"
+                  placeholder="Enter Docket Charges"
+                  [(ngModel)]="form.docketCharges"
+                  required>
+
+                <span
+                  *ngIf="docketCharges.errors && docketCharges.invalid && (docketCharges.dirty || docketCharges.touched)"
+                  class="text-danger">Enter the docket charges</span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="input_box">
+                    <label for="fuelCharges">Fuel Charges</label><br>
+                    <input type="number" id="fuelCharges" name="fuelCharges"
+                      #fuelCharges="ngModel"
+                      placeholder="Enter Fuel Charges"
+                      [(ngModel)]="form.fuelCharges"
+                      required>
+                    <span
+                      *ngIf="fuelCharges.errors && fuelCharges.invalid && (fuelCharges.dirty || fuelCharges.touched)"
+                      class="text-danger">Enter the fuel charges</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="input_box">
+                  <label for="loading">Loading</label><br>
+                  <input type="text" id="loading" name="loading"
+                    #loading="ngModel"
+                    placeholder="Enter Loading Charges"
+                    [(ngModel)]="form.loadingCharges"
+                    required>
+                  <span
+                    *ngIf="loading.errors && loading.invalid && (loading.dirty || loading.touched)"
+                    class="text-danger">Enter the loading</span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="input_box">
+                  <label for="unloading">Unloading</label><br>
+                  <input type="number" id="unloading" name="unloading"
+                    #unloading="ngModel"
+                    placeholder="Enter Unloading Charges"
+                    [(ngModel)]="form.unloadingCharges"
+                    required>
+                  <span
+                    *ngIf="unloading.errors && unloading.invalid && (unloading.dirty || unloading.touched)"
+                    class="text-danger">Enter the unloading</span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="input_box">
+                  <label for="doorDelivery">Door Delivery</label><br>
+                  <input type="text" id="doorDelivery" name="doorDelivery"
+                    #doorDelivery="ngModel"
+                    placeholder="Enter Door Delivery Charges"
+                    [(ngModel)]="form.doorDelivery"
+                    required>
+                  <span
+                    *ngIf="doorDelivery.errors && doorDelivery.invalid && (doorDelivery.dirty || doorDelivery.touched)"
+                    class="text-danger">Enter the door delivery</span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="input_box">
+                  <label for="collectionCharges">Collection Charges</label><br>
+                  <input type="number" id="collectionCharges"
+                    name="collectionCharges"
+                    #collectionCharges="ngModel"
+                    placeholder="Enter Collection Charges"
+                    [(ngModel)]="form.collectionCharges"
+                    required>
+                  <span
+                    *ngIf="collectionCharges.errors && collectionCharges.invalid && (collectionCharges.dirty || collectionCharges.touched)"
+                    class="text-danger">Enter the collection charges</span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="input_box">
+                  <label for="insuranceCharges">Insurance Charges</label><br>
+                  <input type="type" id="insuranceCharges"
+                    name="insuranceCharges"
+                    #insuranceCharges="ngModel"
+                    placeholder="Enter Insurance Charges"
+                    [(ngModel)]="form.insuranceCharges"
+                    required>
+                  <span
+                    *ngIf="insuranceCharges.errors && insuranceCharges.invalid && (insuranceCharges.dirty || insuranceCharges.touched)"
+                    class="text-danger">Enter the insurance charges</span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="input_box">
+                  <label for="total">Total</label><br>
+                  <input type="number" id="total" name="total"
+                    #total="ngModel"
+                    placeholder="Enter Total"
+                    [(ngModel)]="form.total"
+                    required>
+                  <span
+                    *ngIf="total.errors && total.invalid && (total.dirty || total.touched)"
+                    class="text-danger">Enter the total</span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="input_box">
+                  <label for="gst">GST</label><br>
+                  <input type="number" id="gst" name="gst"
+                    #gst="ngModel"
+                    placeholder="Enter GST"
+                    [(ngModel)]="form.gst"
+                    required>
+                  <span
+                    *ngIf="gst.errors && gst.invalid && (gst.dirty || gst.touched)"
+                    class="text-danger">Enter the gst</span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="input_box">
+                  <label for="finalTotal">Final Total</label><br>
+                  <input type="number" id="finalTotal" name="finalTotal"
+                    #finalTotal="ngModel"
+                    placeholder="Enter Final Total"
+                    [(ngModel)]="form.finalTotal"
+                    required>
+                  <span
+                    *ngIf="finalTotal.errors && finalTotal.invalid && (finalTotal.dirty || finalTotal.touched)"
+                    class="text-danger">Enter the final total</span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="input_box">
+                  <label for="note">Note</label><br>
+                  <textarea id="note" name="note"
+                    #note="ngModel"
+                    placeholder="Enter Note"
+                    [(ngModel)]="form.note"
+                    rows="3"></textarea>
+                  <span
+                    *ngIf="note.errors && note.invalid && (note.dirty || note.touched)"
+                    class="text-danger">Enter the note</span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="input_box">
+                  <label for="paymentMode">Payment Mode</label>
+                  <select name="paymentMode" id="paymentMode"
+                    #paymentMode="ngModel" [(ngModel)]="form.paymentMode"
+                    class="type" required>
+                    <option value disabled>Select an option</option>
+                    <!-- <option *ngFor="let item of parties" [value]="item.id" [innerText]="item.name"></option> -->
+                    <option value="upi">UPI</option>
+                    <option value="cash">Cash</option>
+                    <option value="credit-card">Credit Card</option>
+                  </select>
+                  <span
+                    *ngIf="paymentMode.errors && paymentMode.invalid && (paymentMode.dirty || paymentMode.touched)"
+                    class="text-danger">Select payment mode</span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="input_box">
+                  <label for="deliveryNote">Delivery Note</label><br>
+                  <textarea id="deliveryNote" name="deliveryNote"
+                    #deliveryNote="ngModel"
+                    placeholder="Enter Delivery Note"
+                    [(ngModel)]="form.deliveryNote"
+                    rows="3"></textarea>
+                  <span
+                    *ngIf="deliveryNote.errors && deliveryNote.invalid && (deliveryNote.dirty || deliveryNote.touched)"
+                    class="text-danger mb-0">Enter the delivery note</span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="input_box">
+                  <label for="status">Status</label><br>
+                  <input type="text" id="status" name="status"
+                    #status="ngModel"
+                    placeholder="Enter Status"
+                    [(ngModel)]="form.status"
+                    required>
+                  <span
+                    *ngIf="status.errors && status.invalid && (status.dirty || status.touched)"
+                    class="text-danger">Enter the status</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reg_btn">
+      <input type="submit" [disabled]="!addBookingForm['valid']"   value="{{ id > 0 ? 'Update ': 'Add ' }} ">
+    </div>
+  </form>

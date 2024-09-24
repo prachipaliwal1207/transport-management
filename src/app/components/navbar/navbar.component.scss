@@ -1,0 +1,47 @@
+.toolbar-item-spacer {
+  flex: 1 1 auto;
+}
+
+.app-container {
+  height: 90%;
+  margin: 0;
+}
+.app-sidenav {
+  width: 230px;
+}
+.app-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+span{
+  margin-top: 3px;
+  margin-left: 5px;
+}
+
+mat-list-item{
+  margin-left: 8px;
+}
+
+.search-header {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  & .search-input {
+    width: 100%;
+    padding: 0.3rem .2rem;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+  }
+
+  & .search-icon{
+    position: absolute;
+    color: #3f51b5;
+    right: 0.6rem;
+  }
+}
